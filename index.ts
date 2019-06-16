@@ -1,5 +1,6 @@
 import { serve, ServerRequest } from "https://deno.land/std@v0.5/http/server.ts";
 import * as expressive from "https://raw.githubusercontent.com/NMathar/deno-express/master/mod.ts";
+import { reset } from "https://raw.githubusercontent.com/denoland/deno_std/master/colors/mod";
 
 (async () => {
   const port = 3000;
@@ -14,6 +15,11 @@ import * as expressive from "https://raw.githubusercontent.com/NMathar/deno-expr
   app.get("/api/user/{user_id}", async (req, res) => {
     await res.json([{ id: req.params.user_id, name: "Jim Doe", phone: "12425323" }]);
   });
+
+  // app.get('/', async (req, res) => {
+  //   await res.file('./index.html');
+  // });
+
   const server = await app.listen(port);
   console.log("app listening on port " + server.port);
 })();
